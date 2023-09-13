@@ -1,6 +1,6 @@
 from ultralytics import YOLO
 import os
-import cv2
+# import cv2
 
 def select_best_model(model_path):
     # Provide the path to the directory containing the trained model weights
