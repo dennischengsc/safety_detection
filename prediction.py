@@ -2,9 +2,12 @@
 from IPython.display import display
 
 from ultralytics import YOLO
+from IPython.display import display
+from pathlib import Path
+from shutil import copy
 
-def make_predictions(model_path, reference_image_dir, output_dir):
+def make_predictions(best_model, reference_image_dir, output_dir):
     # Load the YOLO model using the provided model path
-    model = YOLO('best.pt')
+    model = best_model
 
-    model.predict('reference_image/', save=True)
+    model.predict(reference_image_dir, save=True, project=output_dir)

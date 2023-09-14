@@ -5,13 +5,13 @@ from ultralytics import YOLO
 import os
 
 if __name__ == "__main__":
-    user_home = os.path.expanduser("~")
-    safety_detection_path = "\home\zafz\code\dennischengsc\safety_detection"
-    input_dir = os.path.join(user_home, safety_detection_path, 'raw_data/css-data')
-    work_dir = os.path.join(user_home, safety_detection_path, 'raw_data/model')
-    model_path = os.path.join(user_home, safety_detection_path, 'best.pt')
-    output_dir = os.path.join(user_home, safety_detection_path, 'raw_data/predict')
-    reference_image_dir = os.path.join(user_home, safety_detection_path, 'reference_image')
+
+    input_dir = '/home/dennischeng/code/dennischengsc/safety_detection/raw_data/css-data'
+    work_dir = '/home/dennischeng/code/dennischengsc/safety_detection/raw_data/model'
+    model_path = 'best.pt'
+    output_dir = 'detection/image' # to save prediction image
+    # reference_image_dir = '/home/dennischeng/code/dennischengsc/safety_detection/reference_image'  # Specify the path to your reference images
+    reference_image_dir = 'reference_image'
 
     num_classes = 10
     classes = ['Hardhat', 'Mask', 'NO-Hardhat', 'NO-Mask', 'NO-Safety Vest',
