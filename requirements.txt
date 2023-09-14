@@ -1,1 +1,3 @@
-123
+ultralytics
+pydub
+sudo apt-get install ffmpeg
