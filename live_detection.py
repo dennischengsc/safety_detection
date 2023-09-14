@@ -1,23 +1,18 @@
 import cv2
 
-cv2.namedWindow("preview")
+# Open a connection to the default camera (usually 0 or 1 for built-in webcams)
+cap = cv2.VideoCapture(1)
 
-# Replace '/dev/video0' with the correct camera device path if needed
-camera_index = '/dev/video0'
+while True:
+    # Read a frame from the webcam
+    ret, frame = cap.read()
 
-vc = cv2.VideoCapture(camera_index)
-
-if vc.isOpened():  # Try to get the first frame
-    rval, frame = vc.read()
-else:
-    rval = False
-
-while rval:
-    cv2.imshow("preview", frame)
-    rval, frame = vc.read()
-    key = cv2.waitKey(20)
-    if key == 27:  # Exit on ESC
+    if not ret:
         break
 
-vc.release()
-cv2.destroyWindow("preview")
+    # Display the frame in a window
+    cv2.imshow('Webcam Feed', frame)
+
+    # Break the loop if 'q' is pressed
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
