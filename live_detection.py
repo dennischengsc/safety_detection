@@ -1,18 +1,29 @@
 import cv2
+from ultralytics import YOLO
+from pydub import AudioSegment
+from pydub.playback import play
 
-# Open a connection to the default camera (usually 0 or 1 for built-in webcams)
-cap = cv2.VideoCapture(1)
+# Load the YOLOv8 model using the provided model path
+model_path = 'best.pt'  # Replace with the path to your YOLOv8 model
+model = YOLO(model_path)
 
-while True:
-    # Read a frame from the webcam
-    ret, frame = cap.read()
+# return the predicted results
+model.predict(source="0",show=True)
 
-    if not ret:
-        break
+'''after this line is voice incorporation, code still in progress'''
+#Creation of Alert Sound
+# def play_alert_sound():
+#     alert_sound = AudioSegment.from_file("sound.wav", format="wav")
+#     duration= 2100
+#     reminder_sound = AudioSegment.from_file("sounds/SafetyJoviEdited.wav", format="wav")
+#     alert_sound= alert_sound[:duration]
+#     reminder_sound_new_start= reminder_sound+10
+#     combined_sound= alert_sound+reminder_sound_new_start
+#     play(combined_sound)
 
-    # Display the frame in a window
-    cv2.imshow('Webcam Feed', frame)
-
-    # Break the loop if 'q' is pressed
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+# #Playing of Alert Sound upon Object Detection
+# def object_detection_alert():
+#     detected_classes= ['NO-Hardhat', 'NO-Mask', 'NO-Safety Vest']
+#     for detection in detected_classes:
+#         if detection in ['NO-Hardhat', 'NO-Mask', 'NO-Safety Vest']:
+#             play_alert_sound()
