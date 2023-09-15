@@ -3,13 +3,6 @@ import cv2
 import os
 from ultralytics import YOLO
 
-<<<<<<< HEAD
-def make_predictions(best_model, reference_image_dir, output_dir):
-    # Load the YOLO model using the provided model path
-    model = best_model
-
-    # model.predict(reference_image_dir, save=True, project=output_dir)
-=======
 # 不可以刪
 # def make_predictions(best_model, reference_image_dir, output_dir):
 #     # Load the YOLO model using the provided model path
@@ -23,7 +16,6 @@ def make_predictions(best_model, reference_image_dir, output_dir):
     # Load the YOLO model using the provided model path
     model = best_model
 
->>>>>>> e312ab68af6859584ce8ffe984d8d5f228db8a4a
     results = model.predict(reference_image_dir, save=True, project=output_dir)  # Assuming 'results' is a list of detection results
 
     classes = {
@@ -39,28 +31,6 @@ def make_predictions(best_model, reference_image_dir, output_dir):
         9: 'vehicle'
     }
 
-<<<<<<< HEAD
-    # Define the class IDs you want to capture
-    target_class_ids = [0,1,2,3,4,5,7]
-    filtered_class_names = []
-
-    # Now you can iterate through the filtered results and work with them
-    for result in results:
-        boxes = result.boxes
-        if int(boxes.cls) in target_class_ids:
-            if boxes.conf >0.8:
-                filtered_class_names.append(classes)
-
-        # for box in boxes:
-        #     print(box.cls)
-        # Filter and capture boxes.cls elements with specific class IDs
-
-        filtered_class_names = [classes[int(cls)] for cls in boxes.cls if int(cls) in target_class_ids]
-
-        for box in filtered_class_names:
-            if box.
-        print(filtered_class_names)
-=======
     result = results[0]
     box = result.boxes[0]
     print("Object type:",box.cls[0])
@@ -85,4 +55,3 @@ def make_predictions(best_model, reference_image_dir, output_dir):
         print("Coordinates:", cords)
         print("Probability:", conf)
         print("---")
->>>>>>> e312ab68af6859584ce8ffe984d8d5f228db8a4a
