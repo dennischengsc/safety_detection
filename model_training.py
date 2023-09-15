@@ -1,12 +1,12 @@
 from ultralytics import YOLO
 import os
 
-def train_yolo_model(work_dir, num_classes, img_size=640, epochs=200, batch=64):
-    model = YOLO(os.path.join(work_dir, 'yolov8n.pt'))
+def train_yolo_model(work_path, num_classes, img_size=640, epochs=200, batch=64):
+    model = YOLO(os.path.join(work_path, 'yolov8n.pt'))
     model.train(
-        data=os.path.join(work_dir, 'data.yaml'),
+        data=os.path.join(work_path, 'data.yaml'),
         task='detect',
-        imgsz=img_size,
+        imgsz=img_size,0
         epochs=epochs,
         batch=batch,
         mode='train',
