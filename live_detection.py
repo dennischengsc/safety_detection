@@ -1,43 +1,29 @@
-# import cv2
-
-# # Open a connection to the default camera (usually 0 or 1 for built-in webcams)
-# cap = cv2.VideoCapture(0)
-
-# while True:
-#     # Read a frame from the webcam
-#     ret, frame = cap.read()
-
-#     if not ret:
-#         break
-
-#     # Display the frame in a window
-#     cv2.imshow('Webcam Feed', frame)
-
-#     # Break the loop if 'q' is pressed
-#     if cv2.waitKey(1) & 0xFF == ord('q'):
-#         break
-
-
 import cv2
+from ultralytics import YOLO
+from pydub import AudioSegment
+from pydub.playback import play
 
-# Loop through camera indices until no more cameras are found
-index = 0
-while True:
-    # Try to open the camera at the current index
-    cap = cv2.VideoCapture(index)
+# Load the YOLOv8 model using the provided model path
+model_path = 'best.pt'  # Replace with the path to your YOLOv8 model
+model = YOLO(model_path)
 
-    # Check if the camera was successfully opened
-    if not cap.isOpened():
-        break
+# return the predicted results
+model.predict(source="0",show=True)
 
-    # Get information about the camera
-    camera_info = f"Camera {index}: {cap.get(cv2.CAP_PROP_FRAME_WIDTH)}x{cap.get(cv2.CAP_PROP_FRAME_HEIGHT)}"
+'''after this line is voice incorporation, code still in progress'''
+#Creation of Alert Sound
+# def play_alert_sound():
+#     alert_sound = AudioSegment.from_file("sound.wav", format="wav")
+#     duration= 2100
+#     reminder_sound = AudioSegment.from_file("sounds/SafetyJoviEdited.wav", format="wav")
+#     alert_sound= alert_sound[:duration]
+#     reminder_sound_new_start= reminder_sound+10
+#     combined_sound= alert_sound+reminder_sound_new_start
+#     play(combined_sound)
 
-    # Print the camera information
-    print(camera_info)
-
-    # Release the camera
-    cap.release()
-
-    # Increment the index to check the next camera
-    index += 1
+# #Playing of Alert Sound upon Object Detection
+# def object_detection_alert():
+#     detected_classes= ['NO-Hardhat', 'NO-Mask', 'NO-Safety Vest']
+#     for detection in detected_classes:
+#         if detection in ['NO-Hardhat', 'NO-Mask', 'NO-Safety Vest']:
+#             play_alert_sound()
