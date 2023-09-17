@@ -14,3 +14,9 @@ LOCAL_WORK_PATH = os.path.join(LOCAL_DATA_PATH, 'raw_data/model')
 LOCAL_MODEL_PATH = os.path.join(LOCAL_DATA_PATH, 'model','yolov8n_7_classes', 'weights','best.pt')
 LOCAL_OUTPUT_PATH = os.path.join(LOCAL_DATA_PATH, 'prediction')
 LOCAL_REFERENCE_PATH = os.path.join(LOCAL_DATA_PATH, 'reference_image')
+NUM_CLASSES = 7
+CLASS_NAME = ['Hardhat', 'Mask', 'NO-Hardhat', 'NO-Mask',
+              'NO-Safety Vest','Person', 'Safety Vest']
+
+#IF INCLUDING WEBCAM
+#LIVE_DEMO = ['NO-Hardhat', 'NO-Mask', 'NO-Safety Vest']
