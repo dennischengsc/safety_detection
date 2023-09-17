@@ -82,7 +82,8 @@ if source_radio == settings.IMAGE:
         else:
             if st.sidebar.button('Detect Objects'):
                 res = model.predict(uploaded_image,
-                                    conf=confidence
+                                    conf=confidence,
+                                    classes=[5]
                                     )
                 boxes = res[0].boxes
                 res_plotted = res[0].plot()[:, :, ::-1]
@@ -91,7 +92,9 @@ if source_radio == settings.IMAGE:
                 try:
                     with st.expander("Detection Results"):
                         for box in boxes:
+                            # st.write(box.data[:,-1])
                             st.write(box.data)
+
                 except Exception as ex:
                     # st.write(ex)
                     st.write("No image is uploaded yet!")
