@@ -1,5 +1,5 @@
-# from data_prep import create_data_yaml, count_class_occurrences, display_image_sizes, display_set_sizes
-# from model_training import train_yolo_model
+from data_prep import create_data_yaml, count_class_occurrences, display_image_sizes, display_set_sizes
+from model_training import train_yolo_model
 from prediction import make_predictions
 from ultralytics import YOLO
 import os
@@ -16,22 +16,23 @@ if __name__ == "__main__":
     output_dir = os.path.join(user_home, safety_detection_path, 'prediction')
     reference_image_dir = os.path.join(user_home, safety_detection_path, 'reference_image')
 
-    num_classes = 10
+    num_classes = 7
     classes = ['Hardhat', 'Mask', 'NO-Hardhat', 'NO-Mask', 'NO-Safety Vest',
-               'Person', 'Safety Cone', 'Safety Vest', 'machinery', 'vehicle']
+               'Person', 'Safety Vest']
 
-    # # Select the best model
-    best_model = YOLO(model_path)
-
-# Make predictions using the best model for all 10 reference images
-    make_predictions(best_model, reference_image_dir, output_dir)
-
-
-
-
-
+    # # Data Preprocessing
     # create_data_yaml(input_dir, work_dir, num_classes, classes)
     # class_stat, data_len = count_class_occurrences(input_dir, num_classes, classes)
     # display_image_sizes(input_dir)
     # display_set_sizes(input_dir)
-    # train_yolo_model(work_dir, num_classes)
+
+    # Select the best model
+    best_model = YOLO(model_path)
+
+
+    # Train model
+    train_yolo_model(work_dir, num_classes)
+
+
+    # # Make predictions using the best model for all 10 reference images
+    # make_predictions(best_model, reference_image_dir, output_dir)
