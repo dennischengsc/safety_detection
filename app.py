@@ -83,17 +83,29 @@ if source_radio == settings.IMAGE:
             if st.sidebar.button('Detect Objects'):
                 res = model.predict(uploaded_image,
                                     conf=confidence,
-                                    classes=[5]
+                                    classes=[0,4,5]
                                     )
                 boxes = res[0].boxes
                 res_plotted = res[0].plot()[:, :, ::-1]
                 st.image(res_plotted, caption='Detected Image',
                          use_column_width=True)
+                #Initial a counter for calss 5 object
+                class_5_count =0
+
                 try:
                     with st.expander("Detection Results"):
                         for box in boxes:
                             # st.write(box.data[:,-1])
+
+
+                            # Extact class IDs
+                            clsss_ids = box.data[:,-1]
+                            if 5 in clsss_ids:
+                                class_5_count +=1
+
                             st.write(box.data)
+                        # Display the total count of class 5 objects
+                    st.write(f"Counter of Person is : {class_5_count}")
 
                 except Exception as ex:
                     # st.write(ex)
@@ -101,6 +113,21 @@ if source_radio == settings.IMAGE:
 
 elif source_radio == settings.VIDEO:
     helper.play_stored_video(confidence, model)
+    class_5_count = 0  # Initialize the counter for class 5 objects
+
+    # Process each frame of the video
+    for frame in helper.get_video_frames():  # Assuming you have a function get_video_frames() that returns video frames
+        # Detect objects in the frame
+        res = model.predict(frame, conf=confidence, classes=[0, 4, 5])
+        boxes = res[0].boxes
+
+        for box in boxes:
+            class_ids = box.data[:, -1]
+            if 5 in class_ids:
+                class_5_count += 1
+
+    # Display the total count of class 5 objects after processing the video
+    st.write(f"Total Count of Persons: {class_5_count}")
 
 elif source_radio == settings.WEBCAM:
     helper.play_webcam(confidence, model)
