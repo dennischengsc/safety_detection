@@ -7,8 +7,6 @@ from params import *
 from data_prep import *
 
 
-
-
 if __name__ == "__main__":
 
     # # Select the best model
@@ -26,9 +24,7 @@ if __name__ == "__main__":
     make_predictions(best_model, LOCAL_REFERENCE_PATH, LOCAL_OUTPUT_PATH)
 
 
-
-
-# 2.
-#class_stat, data_len = count_class_occurrences(input_dir, num_classes, classes)
-# display_image_sizes(input_dir)
-# display_set_sizes(input_dir)
+    # 2.
+    #class_stat, data_len = count_class_occurrences(input_dir, num_classes, classes)
+    # display_image_sizes(input_dir)
+    # display_set_sizes(input_dir)
