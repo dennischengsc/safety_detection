@@ -12,7 +12,7 @@ def create_data_yaml(input_path, work_path, num_classes, classes):
         'names': classes
     }
 
-    with open(os.path.join(input_path, 'data.yaml'), 'w+') as file:
+    with open(os.path.join(work_path, 'data.yaml'), 'w+') as file:
         yaml.dump(dict_file, file)
 
 def count_class_occurrences(input_path, num_classes, classes):

@@ -13,17 +13,16 @@ if __name__ == "__main__":
 
     # # Select the best model
 
+    # Make predictions using the best model for all 10 reference images
 
-# Make predictions using the best model for all 10 reference images
-
-# 1. Create Data.yaml
-#create_data_yaml(LOCAL_INPUT_PATH, LOCAL_WORK_PATH,NUM_CLASSES, CLASS_NAME)
-# 2. Train yolo model
-#train_yolo_model(LOCAL_WORK_PATH, NUM_CLASSES)
-# 3. Get best model
-#best_model = YOLO(LOCAL_MODEL_PATH)
-# 4. Make prediction
-#make_predictions(best_model, LOCAL_REFERENCE_PATH, LOCAL_OUTPUT_PATH)
+    # 1. Create Data.yaml
+    #create_data_yaml(NUM_CLASSES, CLASS_NAME)
+    # 2. Train yolo model
+    #train_yolo_model(LOCAL_WORK_PATH, NUM_CLASSES)
+    # 3. Get best model
+    #best_model = YOLO(LOCAL_MODEL_PATH)
+    # 4. Make prediction
+    #make_predictions(best_model, LOCAL_REFERENCE_PATH, LOCAL_OUTPUT_PATH)
 
 
 
