@@ -1,8 +1,7 @@
 from pathlib import Path
 import PIL
-
-# External packages
 import streamlit as st
+import subprocess
 
 # Local Modules
 import settings
@@ -23,7 +22,7 @@ st.title("Safety Object Detection using YOLOv8")
 st.sidebar.header("ML Model Config")
 
 # Model Options
-model_type = st.sidebar.radio("Select Task", ['Detection'])
+model_type = st.sidebar.radio("Select Task", ['Detection', 'Live Prediction'])
 
 confidence = float(st.sidebar.slider(
     "Select Model Confidence", 25, 100, 40)) / 100
@@ -42,15 +41,25 @@ class_names = {
 selected_classes = st.sidebar.multiselect("Select Classes for Prediction", list(class_names.values()))
 st.write(f"Selected Classes: {selected_classes}")
 
-# Selecting Detection Or Segmentation
+# Initialize model_path to None
+model_path = None
+
+# Selecting Detection Or Live Prediction
 if model_type == 'Detection':
     model_path = Path(settings.DETECTION_MODEL)
+elif model_type == 'Live Prediction':
+    st.sidebar.subheader("Run Live Prediction")
+    if st.sidebar.button("Run"):
+        subprocess.Popen(["python", "live_prediction.py"])
+        st.success("Live Prediction script has been executed.")
 
 # Load Pre-trained ML Model
 try:
-    model = helper.load_model(model_path)
+    if model_path is not None:
+        model = helper.load_model(model_path)
 except Exception as ex:
-    st.error(f"Unable to load model. Check the specified path: {model_path}")
+    if model_path is not None:
+        st.error(f"Unable to load model. Check the specified path: {model_path}")
     st.error(ex)
 
 st.sidebar.header("Image/Video Config")
