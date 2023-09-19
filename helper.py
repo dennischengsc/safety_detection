@@ -53,9 +53,11 @@ def _display_detected_frames(conf, model, st_frame, image, is_display_tracking=N
     else:
         # Predict the objects in the image using the YOLOv8 model
         res = model.predict(image, conf=conf)
+    print(f'this is {res}')
 
     # Plot the detected objects on the video frame
     res_plotted = res[0].plot()
+    print(res_plotted)
     st_frame.image(res_plotted,
                    caption='Detected Video',
                    channels="BGR",
@@ -102,7 +104,7 @@ def play_youtube_video(conf, model):
                     vid_cap.release()
                     break
         except Exception as e:
-            st.sidebar.error("Error loading video: " + str(e))
+            st.sidebar.error("Error loading youtube video: " + str(e))
 
 
 def play_rtsp_stream(conf, model):
@@ -176,7 +178,7 @@ def play_webcam(conf, model):
                     vid_cap.release()
                     break
         except Exception as e:
-            st.sidebar.error("Error loading video: " + str(e))
+            st.sidebar.error("Error loading webcam: " + str(e))
 
 
 def play_stored_video(conf, model):
@@ -222,4 +224,4 @@ def play_stored_video(conf, model):
                     vid_cap.release()
                     break
         except Exception as e:
-            st.sidebar.error("Error loading video: " + str(e))
+            st.sidebar.error("Error loading store video: " + str(e))
