@@ -22,7 +22,7 @@ if __name__ == "__main__":
     # 3. Get best model
     #best_model = YOLO(LOCAL_MODEL_PATH)
     # 4. Make prediction
-    #make_predictions(best_model, LOCAL_REFERENCE_PATH, LOCAL_OUTPUT_PATH)
+    # make_predictions(best_model, LOCAL_REFERENCE_PATH, LOCAL_OUTPUT_PATH)
 
 
 

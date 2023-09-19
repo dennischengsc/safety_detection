@@ -59,16 +59,16 @@ def train_yolo_model(img_size=640, epochs=1, batch=64, save_period=10):
 
         model = YOLO(model_path)
         model.train(
-        data=data_path,
-        task='detect',
-        imgsz=img_size,
-        epochs=epochs,
-        batch=batch,
-        mode='train',
-        name='yolov8n_change_path_test',
-        resume=False,
-        save_period=save_period,
-        project = os.path.join(LOCAL_DATA_PATH, 'model')
+            data=data_path,
+            task='detect',
+            imgsz=img_size,
+            epochs=epochs,
+            batch=batch,
+            mode='train',
+            name='yolov8n_change_path_test',
+            resume=False,
+            save_period=save_period,
+            project=os.path.join(LOCAL_DATA_PATH, 'model')
         )
 
     elif MODEL_TARGET == 'gcs':
@@ -76,25 +76,27 @@ def train_yolo_model(img_size=640, epochs=1, batch=64, save_period=10):
         client = storage.Client()
 
         # Define the GCS paths for model and data
-        gcs_bucket_name = BUCKET_NAME
-        model_path = f'gs://{gcs_bucket_name}/model/yolov8n.pt'
-        data_path = f'gs://{gcs_bucket_name}/model/data.yaml'
+        bucket = client.bucket(BUCKET_NAME)
+        direc = bucket.blob('model')
+        model_blob = bucket.blob('model/yolov8n.pt')
+        data_blob = bucket.blob('model/data.yaml')
 
-        model = YOLO(model_path)
+        model = YOLO(model_blob)
         model.train(
-        data=data_path,
-        task='detect',
-        imgsz=img_size,
-        epochs=epochs,
-        batch=batch,
-        mode='train',
-        name='yolov8n_change_path_test',
-        resume=False,
-        save_period=save_period,
-        project = os.path.join(gcs_bucket_name, 'model')
-    )
+            data=data_blob,
+            task='detect',
+            imgsz=img_size,
+            epochs=epochs,
+            batch=batch,
+            mode='train',
+            name='yolov8n_v1_test',
+            resume=False,
+            save_period=save_period,
+            project=direc.upload_from_string('best.pt'),
+            verbose = True
+        )
 
-create_data_yaml(NUM_CLASSES,CLASS_NAME)
+# create_data_yaml(NUM_CLASSES,CLASS_NAME)
 train_yolo_model()
 
 # def load_image_gcs ():
