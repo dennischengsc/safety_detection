@@ -1,0 +1,36 @@
+Ultralytics YOLOv8.0.180 🚀 Python-3.10.12 torch-2.0.0 CUDA:0 (Tesla T4, 15110MiB)
+engine/trainer: task=detect, mode=train, model=/kaggle/input/construction-site-safety-image-dataset-roboflow/results_yolov8n_100e/kaggle/working/yolov8n.pt, data=/kaggle/working/data.yaml, epochs=200, patience=30, batch=32, imgsz=640, save=True, save_period=10, cache=False, device=None, workers=8, project=None, name=yolov8n_v1_train, exist_ok=False, pretrained=True, optimizer=Adam, verbose=True, seed=0, deterministic=True, single_cls=False, rect=False, cos_lr=False, close_mosaic=10, resume=False, amp=True, fraction=1.0, profile=False, freeze=None, overlap_mask=True, mask_ratio=4, dropout=0.0, val=True, split=val, save_json=False, save_hybrid=False, conf=None, iou=0.7, max_det=300, half=False, dnn=False, plots=True, source=None, show=False, save_txt=False, save_conf=False, save_crop=False, show_labels=True, show_conf=True, vid_stride=1, stream_buffer=False, line_width=None, visualize=False, augment=False, agnostic_nms=False, classes=None, retina_masks=False, boxes=True, format=torchscript, keras=False, optimize=False, int8=False, dynamic=False, simplify=False, opset=None, workspace=4, nms=False, lr0=0.01, lrf=0.01, momentum=0.937, weight_decay=0.0005, warmup_epochs=3.0, warmup_momentum=0.8, warmup_bias_lr=0.1, box=7.5, cls=0.5, dfl=1.5, pose=12.0, kobj=1.0, label_smoothing=0.0, nbs=64, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, degrees=0.0, translate=0.1, scale=0.5, shear=0.0, perspective=0.0, flipud=0.0, fliplr=0.5, mosaic=1.0, mixup=0.0, copy_paste=0.0, cfg=None, tracker=botsort.yaml, save_dir=runs/detect/yolov8n_v1_train
+Downloading https://ultralytics.com/assets/Arial.ttf to '/root/.config/Ultralytics/Arial.ttf'...
+100%|██████████| 755k/755k [00:00<00:00, 44.3MB/s]
+Overriding model.yaml nc=80 with nc=10
+
+
+model.train(data=os.path.join(work_dir,'data.yaml'),
+            task='detect',
+            imgsz=640,
+            epochs=200,
+            batch=32,
+            patience = 30,
+            save_period = 10,
+            optimizer = 'Adam',
+            mode='train',
+            name='yolov8n_v1_train')
+
+
+
+ultralytics.utils.metrics.DetMetrics object with attributes:
+
+ap_class_index: array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+box: ultralytics.utils.metrics.Metric object
+confusion_matrix: <ultralytics.utils.metrics.ConfusionMatrix object at 0x7b985e637af0>
+fitness: 0.4892425788735777
+keys: ['metrics/precision(B)', 'metrics/recall(B)', 'metrics/mAP50(B)', 'metrics/mAP50-95(B)']
+maps: array([    0.53372,     0.66822,     0.36145,     0.31845,     0.39841,     0.46849,     0.47275,     0.54098,     0.55395,     0.28692])
+names: {0: 'Hardhat', 1: 'Mask', 2: 'NO-Hardhat', 3: 'NO-Mask', 4: 'NO-Safety Vest', 5: 'Person', 6: 'Safety Cone', 7: 'Safety Vest', 8: 'machinery', 9: 'vehicle'}
+plot: True
+results_dict: {'metrics/precision(B)': 0.8762975455852999, 'metrics/recall(B)': 0.667172484759428, 'metrics/mAP50(B)': 0.7494163559547182, 'metrics/mAP50-95(B)': 0.4603343814201176, 'fitness': 0.4892425788735777}
+save_dir: PosixPath('runs/detect/yolov8n_v1_train')
+speed: {'preprocess': 4.673236294796593, 'inference': 2.339156050431101, 'loss': 0.00035553647760759317, 'postprocess': 1.236137590910259}
+
+
+
