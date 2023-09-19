@@ -1,0 +1,81 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red254\green212\blue213;\red9\green77\blue190;
+\red23\green95\blue199;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0\c87059;\cssrgb\c100000\c86667\c86667;\cssrgb\c0\c39608\c79216;
+\cssrgb\c9804\c46275\c82353;\cssrgb\c100000\c100000\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+Ultralytics YOLOv8.0.181 \uc0\u55357 \u56960  Python-3.10.12 torch-2.0.0 CUDA:0 (Tesla T4, 15110MiB)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf4 engine/trainer: 
+\f0\b0 \cf2 task=detect, mode=train, model=/kaggle/input/epoch165/epoch165.pt, data=/kaggle/working/data.yaml, epochs=200, patience=30, batch=32, imgsz=640, save=True, save_period=5, cache=False, device=None, workers=8, project=None, name=yolov8n_v1_train, exist_ok=False, pretrained=True, optimizer=RMSProp, verbose=True, seed=0, deterministic=True, single_cls=False, rect=False, cos_lr=False, close_mosaic=10, resume=False, amp=True, fraction=1.0, profile=False, freeze=None, overlap_mask=True, mask_ratio=4, dropout=0.0, val=True, split=val, save_json=False, save_hybrid=False, conf=None, iou=0.7, max_det=300, half=False, dnn=False, plots=True, source=None, show=False, save_txt=False, save_conf=False, save_crop=False, show_labels=True, show_conf=True, vid_stride=1, stream_buffer=False, line_width=None, visualize=False, augment=False, agnostic_nms=False, classes=None, retina_masks=False, boxes=True, format=torchscript, keras=False, optimize=False, int8=False, dynamic=False, simplify=False, opset=None, workspace=4, nms=False, lr0=0.01, lrf=0.01, momentum=0.937, weight_decay=0.0005, warmup_epochs=3.0, warmup_momentum=0.8, warmup_bias_lr=0.1, box=7.5, cls=0.5, dfl=1.5, pose=12.0, kobj=1.0, label_smoothing=0.0, nbs=64, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, degrees=0.0, translate=0.1, scale=0.5, shear=0.0, perspective=0.0, flipud=0.0, fliplr=0.5, mosaic=1.0, mixup=0.0, copy_paste=0.0, cfg=None, tracker=botsort.yaml, save_dir=runs/detect/yolov8n_v1_train\
+Downloading {\field{\*\fldinst{HYPERLINK "https://ultralytics.com/assets/Arial.ttf"}}{\fldrslt \cf5 https://ultralytics.com/assets/Arial.ttf}} to '/root/.config/Ultralytics/Arial.ttf'...\
+100%|\uc0\u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 | 755k/755k [00:00<00:00, 14.7MB/s]\
+
+\f1\b \cf4 TensorBoard: 
+\f0\b0 \cf2 Start with 'tensorboard --logdir runs/detect/yolov8n_v1_train', view at {\field{\*\fldinst{HYPERLINK "http://localhost:6006/"}}{\fldrslt \cf5 http://localhost:6006/}}\cf5 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 Transferred 355/355 items from pretrained weights\
+Freezing layer 'model.22.dfl.conv.weight'\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf4 AMP: 
+\f0\b0 \cf2 running Automatic Mixed Precision (AMP) checks with YOLOv8n...\
+Downloading {\field{\*\fldinst{HYPERLINK "https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n.pt"}}{\fldrslt \cf5 \cb3 https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n.pt}} to 'yolov8n.pt'...\
+100%|\uc0\u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 | 6.23M/6.23M [00:00<00:00, 74.0MB/s]\
+
+\f1\b \cf4 AMP: 
+\f0\b0 \cf2 checks passed \uc0\u9989 \
+
+\f1\b \cf4 train: 
+\f0\b0 \cf2 Scanning /kaggle/input/construction-site-safety-image-dataset-roboflow/css-data/train/labels... 2605 images, 6 backgrounds, 0 corrupt: 100%|\uc0\u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 | 2605/2605 [00:30<00:00, 85.21it/s]\
+
+\f1\b \cf4 train: 
+\f0\b0 \cf2 WARNING \uc0\u9888 \u65039  /kaggle/input/construction-site-safety-image-dataset-roboflow/css-data/train/images/004720_jpg.rf.afc486560a4004c7cfd67910af31a29c.jpg: 1 duplicate labels removed\
+
+\f1\b \cf4 train: 
+\f0\b0 \cf2 WARNING \uc0\u9888 \u65039  /kaggle/input/construction-site-safety-image-dataset-roboflow/css-data/train/images/construction-813-_jpg.rf.b085952261fd98f2e76b8065de149b5f.jpg: 1 duplicate labels removed\
+
+\f1\b \cf4 train: 
+\f0\b0 \cf2 WARNING \uc0\u9888 \u65039  Cache directory /kaggle/input/construction-site-safety-image-dataset-roboflow/css-data/train is not writeable, cache not saved.\
+
+\f1\b \cf4 albumentations: 
+\f0\b0 \cf2 Blur(p=0.01, blur_limit=(3, 7)), MedianBlur(p=0.01, blur_limit=(3, 7)), ToGray(p=0.01), CLAHE(p=0.01, clip_limit=(1, 4.0), tile_grid_size=(8, 8))\
+
+\f1\b \cf4 val: 
+\f0\b0 \cf2 Scanning /kaggle/input/construction-site-safety-image-dataset-roboflow/css-data/valid/labels... 114 images, 10 backgrounds, 0 corrupt: 100%|\uc0\u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 \u9608 | 114/114 [00:01<00:00, 100.26it/s]\
+
+\f1\b \cf4 val: 
+\f0\b0 \cf2 WARNING \uc0\u9888 \u65039  Cache directory /kaggle/input/construction-site-safety-image-dataset-roboflow/css-data/valid is not writeable, cache not saved.\
+Plotting labels to runs/detect/yolov8n_v1_train/labels.jpg... \
+
+\f1\b \cf4 optimizer:
+\f0\b0 \cf2  RMSprop(lr=0.01, momentum=0.937) with parameter groups 57 weight(decay=0.0), 64 weight(decay=0.0005), 63 bias(decay=0.0)\
+Resuming training from /kaggle/input/epoch165/epoch165.pt from epoch 167 to 200 total epochs\
+Image sizes 640 train, 640 val\
+Using 1 dataloader workers\
+Logging results to 
+\f1\b \cf2 \cb3 runs/detect/yolov8n_v1_train
+\f0\b0 \cf2 \cb3 \
+Starting training for 200 epochs...\
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb6 ultralytics.utils.metrics.DetMetrics object with attributes:\
+\
+ap_class_index: array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])\
+box: ultralytics.utils.metrics.Metric object\
+confusion_matrix: <ultralytics.utils.metrics.ConfusionMatrix object at 0x796b67b58400>\
+fitness: 0.11032194154550648\
+keys: ['metrics/precision(B)', 'metrics/recall(B)', 'metrics/mAP50(B)', 'metrics/mAP50-95(B)']\
+maps: array([    0.17048,     0.23013,    0.048339,    0.040611,     0.03838,    0.078964,     0.13682,     0.15441,    0.037853,    0.018475])\
+names: \{0: 'Hardhat', 1: 'Mask', 2: 'NO-Hardhat', 3: 'NO-Mask', 4: 'NO-Safety Vest', 5: 'Person', 6: 'Safety Cone', 7: 'Safety Vest', 8: 'machinery', 9: 'vehicle'\}\
+plot: True\
+results_dict: \{'metrics/precision(B)': 0.36542027976752073, 'metrics/recall(B)': 0.2633301717829637, 'metrics/mAP50(B)': 0.2442059181047031, 'metrics/mAP50-95(B)': 0.0954459441500402, 'fitness': 0.11032194154550648\}\
+save_dir: PosixPath('runs/detect/yolov8n_v1_train')\
+speed: \{'preprocess': 3.992781304476554, 'inference': 2.235843424211468, 'loss': 0.0004036384716368558, 'postprocess': 3.2996524844253274\}}
