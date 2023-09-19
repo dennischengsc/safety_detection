@@ -1,5 +1,9 @@
 import os
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9ee7d303321c64b858f7fb8ab0f6c6fbe9b2e172
 ##################  VARIABLES  ##################
 MODEL_TARGET = os.environ.get('MODEL_TARGET')
 GCP_PROJECT = os.environ.get('GCP_PROJECT')

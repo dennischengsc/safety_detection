@@ -1,0 +1,13 @@
+names:
+- Hardhat
+- Mask
+- NO-Hardhat
+- NO-Mask
+- NO-Safety Vest
+- Person
+- Safety Vest
+nc: 7
+test: /home/dennischeng/code/dennischengsc/safety_detection/raw_data/css-data/test
+train: /home/dennischeng/code/dennischengsc/safety_detection/raw_data/css-data/train
+val: /home/dennischeng/code/dennischengsc/safety_detection/raw_data/css-data/valid
+weights: /home/dennischeng/code/dennischengsc/safety_detection/model/weights.pt

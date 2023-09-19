@@ -1,12 +1,19 @@
 import cv2
+<<<<<<< HEAD
 import io
+=======
+>>>>>>> 9ee7d303321c64b858f7fb8ab0f6c6fbe9b2e172
 import numpy as np
 from params import LOCAL_MODEL_PATH
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from pydantic import BaseModel
 from ultralytics import YOLO
 from fastapi.middleware.cors import CORSMiddleware
+<<<<<<< HEAD
 from starlette.responses import StreamingResponse
+=======
+from ultralytics.utils.plotting import Annotator
+>>>>>>> 9ee7d303321c64b858f7fb8ab0f6c6fbe9b2e172
 
 app = FastAPI()
 # app.state.model= load_model()
@@ -28,6 +35,7 @@ async def detect_image(image_upload: UploadFile = File(...)):
     if image_upload:
         # IMPT** need to read uploaded images as bytes
         image_bytes= await image_upload.read()
+<<<<<<< HEAD
         # Convert the bytes to an OpenCV image
         image = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), -1)
         # Perform object detection using the YOLOv8 model
@@ -98,3 +106,15 @@ async def detect_video(video_upload: UploadFile= None):
 @app.get("/")
 def root():
     return {'greetings': 'Hello'}
+=======
+                # Convert the bytes to an OpenCV image
+        image = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), -1)
+        # Perform object detection using the YOLOv8 model
+        results = model.predict(image)
+
+        # # Convert images back to bytes
+        # _, image_encoded= cv2.imdecode(".jpg", image_with_detections)
+        # image_bytes = image_encoded.tobytes()
+        return results
+    raise HTTPException(status_code=400, detail="No image provided")
+>>>>>>> 9ee7d303321c64b858f7fb8ab0f6c6fbe9b2e172
