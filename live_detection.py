@@ -2,6 +2,7 @@
 - updated 20230915-2236 Successful predict and trigger sound and with red boxes shown
 - update 20230918-1516 Successful play the sound smoothly and incorporated person counting features, set interval = 5 (seconds)
 '''
+import os
 import cv2
 from ultralytics import YOLO
 from pydub import AudioSegment
@@ -14,6 +15,10 @@ import pandas as pd
 # Load the YOLOv8 model using the provided model path
 model_path = 'best.pt'  # Replace with the path to your YOLOv8 model
 model = YOLO(model_path)
+
+# Creating a folder to save results for live detection
+if not os.path.exists('results'):
+    os.makedirs('results')
 
 # Initialize the webcam capture
 cap = cv2.VideoCapture(0)  # 0 represents the default camera (you can change this if you have multiple cameras)
@@ -60,6 +65,9 @@ while True:
             # Define the color based on the class condition
             if c == 0 or c == 1 or c == 6:
                 box_color = (0, 0, 255)  # Red for matching classes
+                # Define the filename for the saved frame (you can customize this)
+                filename = f'results/frame_{time.time()}.jpg'
+                cv2.imwrite(filename, frame)
                 # Play the alert sound in a separate thread if it's not currently playing
                 threading.Thread(target=play_alert_sound).start()
             else:
