@@ -1,8 +1,3 @@
-from IPython.display import display
-import cv2
-import os
-from ultralytics import YOLO
-
 # 不可以刪
 def make_predictions(best_model, reference_image_dir, output_dir):
     # Load the YOLO model using the provided model path
