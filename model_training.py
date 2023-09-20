@@ -14,3 +14,4 @@ def train_yolo_model(LOCAL_WORK_PATH, img_size=640, epochs=1, batch=32, save_per
         save_period=save_period,
         resume=False
     )
+
