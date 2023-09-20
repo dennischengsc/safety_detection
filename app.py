@@ -22,7 +22,7 @@ st.title("Safety Object Detection using YOLOv8")
 st.sidebar.header("ML Model Config")
 
 # Model Options
-model_type = st.sidebar.radio("Select Task", ['Detection'])
+model_type = st.sidebar.radio("Select Task", ['Detection', 'Live Prediction'])
 
 confidence = float(st.sidebar.slider(
     "Select Model Confidence", 25, 100, 40)) / 100
@@ -47,13 +47,19 @@ model_path = None
 # Selecting Detection Or Live Prediction
 if model_type == 'Detection':
     model_path = Path(settings.DETECTION_MODEL)
-
+elif model_type == 'Live Prediction':
+    st.sidebar.subheader("Run Live Prediction")
+    if st.sidebar.button("Run"):
+        subprocess.Popen(["python", "live_prediction.py"])
+        st.success("Live Prediction script has been executed.")
 
 # Load Pre-trained ML Model
 try:
-    model = helper.load_model(model_path)
+    if model_path is not None:
+        model = helper.load_model(model_path)
 except Exception as ex:
-    st.error(f"Unable to load model. Check the specified path: {model_path}")
+    if model_path is not None:
+        st.error(f"Unable to load model. Check the specified path: {model_path}")
     st.error(ex)
 
 st.sidebar.header("Image/Video Config")
@@ -142,10 +148,6 @@ elif source_radio == settings.WEBCAM:
 elif source_radio == settings.YOUTUBE:
     selected_class_numbers = [class_number for class_number, class_name in class_names.items() if class_name in selected_classes]
     helper.play_youtube_video(confidence, model, selected_class_numbers)
-
-elif source_radio == settings.LIVEPREDICTION:
-    selected_class_numbers = [class_number for class_number, class_name in class_names.items() if class_name in selected_classes]
-    helper.play_live_prediction(confidence, model, selected_class_numbers)
 
 else:
     st.error("Please select a valid source type!")
