@@ -1,8 +1,6 @@
 from pathlib import Path
 import PIL
 import streamlit as st
-import subprocess
-
 # Local Modules
 import settings
 import helper
