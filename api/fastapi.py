@@ -1,11 +1,13 @@
 import cv2
 import numpy as np
+import io
 from params import LOCAL_MODEL_PATH
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from pydantic import BaseModel
 from ultralytics import YOLO
 from fastapi.middleware.cors import CORSMiddleware
-from ultralytics.utils.plotting import Annotator
+from starlette.responses import StreamingResponse
+# from ultralytics.utils.plotting import Annotator
 
 app = FastAPI()
 # app.state.model= load_model()
@@ -21,6 +23,8 @@ app.add_middleware(
 #model
 model= YOLO(LOCAL_MODEL_PATH)
 #Setting up detection function for images
+
+@app.post("/detect_image/")
 async def detect_image(image_upload: UploadFile = File(...)):
     if image_upload:
         # IMPT** need to read uploaded images as bytes
