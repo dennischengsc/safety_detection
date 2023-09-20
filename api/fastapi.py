@@ -20,7 +20,6 @@ app.add_middleware(
 
 #model
 model= YOLO(LOCAL_MODEL_PATH)
-
 #Setting up detection function for images
 @app.post("/detect_image/")
 async def detect_image(image_upload: UploadFile = File(...)):

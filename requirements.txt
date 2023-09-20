@@ -8,3 +8,7 @@ ultralytics==8.0.175
 ipython==8.5.0
 Flask==2.3.3
 opencv-python==4.8.0
+fastapi==0.103.1
+python-multimethod==1.8
+starlette==0.27.0
+uvicorn==0.23.2
