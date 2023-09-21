@@ -1,12 +1,12 @@
 import cv2
 import io
-import os
 import numpy as np
 from typing import List
 from params import LOCAL_MODEL_PATH
-from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi import FastAPI, UploadFile, File, HTTPException, Form, Depends, Request
 from ultralytics import YOLO
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.templating import Jinja2Templates
 from starlette.responses import StreamingResponse
 
 app = FastAPI()
@@ -20,25 +20,23 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
-#model
-
-model_path = os.path.join('docker', 'best.pt')
-model= YOLO(model_path)
-assert model is not None
-
-@app.post("/detect_image/")
-
+model= YOLO('best.pt')
 #Setting up detection function for images
-async def detect_image(image_upload: UploadFile = File(...)):
+@app.post("/detect_image/")
+async def detect_image(image_upload: UploadFile = File(...),
+                       selected_class: str = Form(...),
+                       conf: float = Form(...)
+                    #    selected_class1: List[int] = Form(...)
+                       ):
+
     if image_upload:
+        selected_class = [int(number) for number in selected_class.split(",")]
         # IMPT** need to read uploaded images as bytes
         image_bytes= await image_upload.read()
         # Convert the bytes to an OpenCV image
         image = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), -1)
         # Perform object detection using the YOLOv8 model
-        res = model.predict(image)
-        # st.write(res)
-        # boxes = res[0].boxes
+        res = model.predict(image, classes = selected_class, conf = conf)
         res_plotted = res[0].plot()[:, :, ::-1]
         bgr_image = cv2.cvtColor(res_plotted, cv2.COLOR_RGB2BGR)
         # Encode the image as JPEG (you can use other formats like PNG)
@@ -51,4 +49,5 @@ async def detect_image(image_upload: UploadFile = File(...)):
 
 @app.get("/")
 def root():
-    return {'greetings':'This is Docker fastapi'}
+    return {
+    'greeting':'Hello'}
