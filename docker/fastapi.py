@@ -1,5 +1,6 @@
 import cv2
 import io
+import os
 import numpy as np
 from typing import List
 from params import LOCAL_MODEL_PATH
@@ -20,7 +21,10 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
-model= YOLO('best.pt')
+model_path = os.path.join('docker', 'best.pt')
+model= YOLO(model_path)
+assert model is not None
+
 #Setting up detection function for images
 @app.post("/detect_image/")
 async def detect_image(image_upload: UploadFile = File(...),
@@ -49,5 +53,4 @@ async def detect_image(image_upload: UploadFile = File(...),
 
 @app.get("/")
 def root():
-    return {
-    'greeting':'Hello'}
+    return {'greetings':'This is Docker fastapi'}
