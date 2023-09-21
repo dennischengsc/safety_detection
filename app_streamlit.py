@@ -3,11 +3,12 @@ import PIL
 import streamlit as st
 # Local Modules
 import settings
-import helper
+# import helper
 import requests
 import os
 from PIL import Image
 from io import BytesIO
+
 
 
 API_URL = 'YOUR_API_URL'
@@ -94,11 +95,11 @@ def process_uploaded_image(uploaded_image, selected_class, conf_threshold):
 
 
 # Load Pre-trained ML Model
-try:
-    model = helper.load_model(model_path)
-except Exception as ex:
-    st.error(f"Unable to load model. Check the specified path: {model_path}")
-    st.error(ex)
+# try:
+#     model = helper.load_model(model_path)
+# except Exception as ex:
+#     st.error(f"Unable to load model. Check the specified path: {model_path}")
+#     st.error(ex)
 
 source_img = None
 
