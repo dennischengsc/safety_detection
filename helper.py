@@ -1,18 +1,8 @@
-import cv2
-import time
-import threading
-import pandas as pd
-import streamlit as st
-from pytube import YouTube
 from ultralytics import YOLO
-from pydub.playback import play
-from pydub import AudioSegment
-from ultralytics.utils.plotting import Annotator
-import threading
+import streamlit as st
+import cv2
+from pytube import YouTube
 
-
-# Local Modules
-import helper
 import settings
 
 
@@ -38,28 +28,6 @@ def display_tracker_options():
         return is_display_tracker, tracker_type
     return is_display_tracker, None
 
-alert_sound_playing = False # alert sound flag
-
-def play_alert_sound():
-    global alert_sound_playing
-    if not alert_sound_playing:
-        alert_sound_playing = True
-        alert_sound = AudioSegment.from_file("sounds/warningalarm.wav", format="wav")
-        duration = 2100
-        reminder_sound = AudioSegment.from_file("sounds/SafetyJoviEdited.wav", format="wav")
-        alert_sound_volume = alert_sound[:duration] + 5  # Adjust volume
-        reminder_sound_volume = reminder_sound + 10  # Adjust volume
-        combined_sound = alert_sound_volume + reminder_sound_volume
-        play(combined_sound)
-        alert_sound_playing = False
-
-# Initialize a lock for synchronizing WhatsApp message sending
-whatsapp_lock = threading.Lock()
-
-# Define a function to send the WhatsApp message in a separate thread
-# def send_whatsapp_thread():
-#     with whatsapp_lock:
-#         send_whatsapp_message()
 
 def _display_detected_frames(conf, model, st_frame, image, is_display_tracking=None, tracker=None, selected_classes=None):
     """
@@ -86,22 +54,10 @@ def _display_detected_frames(conf, model, st_frame, image, is_display_tracking=N
         # Predict the objects in the image using the YOLOv8 model
         res = model.predict(image, conf=conf, classes=selected_classes)
 
-    for r in res:
-        boxes = r.boxes
-        for box in boxes:
-            # b = box.xyxy[0]  # get box coordinates in (top, left, bottom, right) format
-            c = box.cls
-            # Define the color based on the class condition
-            if c == 1 or c == 7 or c == 0:
-                # box_color = (0, 0, 255)  # Red for matching classes
-                # Play the alert sound in a separate thread if it's not currently playing
-                threading.Thread(target=play_alert_sound).start()
-            else:
-                pass
-                # box_color = (0, 255, 0)  # Green for non-matching classes
 
     # Plot the detected objects on the video frame
     res_plotted = res[0].plot()
+
     st_frame.image(res_plotted,
                    caption='Detected Video',
                    channels="BGR",
@@ -188,3 +144,50 @@ def play_webcam(conf, model, selected_classes=None):
                     break
         except Exception as e:
             st.sidebar.error("Error loading webcam: " + str(e))
+
+
+def play_stored_video(conf, model, selected_classes=None):
+    """
+    Plays a stored video file. Tracks and detects objects in real-time using the YOLOv8 object detection model.
+
+    Parameters:
+        conf: Confidence of YOLOv8 model.
+        model: An instance of the `YOLOv8` class containing the YOLOv8 model.
+
+    Returns:
+        None
+
+    Raises:
+        None
+    """
+    source_vid = st.sidebar.selectbox(
+        "Choose a video...", settings.VIDEOS_DICT.keys())
+
+    is_display_tracker, tracker = display_tracker_options()
+
+    with open(settings.VIDEOS_DICT.get(source_vid), 'rb') as video_file:
+        video_bytes = video_file.read()
+    if video_bytes:
+        st.video(video_bytes)
+
+    if st.sidebar.button('Detect Video Objects'):
+        try:
+            vid_cap = cv2.VideoCapture(
+                str(settings.VIDEOS_DICT.get(source_vid)))
+            st_frame = st.empty()
+            while (vid_cap.isOpened()):
+                success, image = vid_cap.read()
+                if success:
+                    _display_detected_frames(conf,
+                                             model,
+                                             st_frame,
+                                             image,
+                                             is_display_tracker,
+                                             tracker,
+                                             selected_classes
+                                             )
+                else:
+                    vid_cap.release()
+                    break
+        except Exception as e:
+            st.sidebar.error("Error loading store video: " + str(e))
