@@ -1,7 +1,10 @@
 from pathlib import Path
 import PIL
+from PIL import Image
 import streamlit as st
 import subprocess
+import requests
+from io import BytesIO
 
 # Local Modules
 import settings
@@ -94,6 +97,7 @@ if source_radio == settings.IMAGE:
         else:
             if st.sidebar.button('Detect Objects'):
                 selected_class_numbers = [class_number for class_number, class_name in class_names.items() if class_name in selected_classes]
+                selected_class_strings = ','.join(map(str, selected_class_numbers))
                 res = model.predict(uploaded_image,
                                     conf=confidence,
                                     classes=selected_class_numbers
@@ -126,9 +130,6 @@ if source_radio == settings.IMAGE:
 
                 except Exception as ex:
                     st.write("No image is uploaded yet!")
-
-
-
 
 elif source_radio == settings.VIDEO:
     selected_class_numbers = [class_number for class_number, class_name in class_names.items() if class_name in selected_classes]

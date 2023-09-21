@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Object Detection</title>
+</head>
+<body>
+    <h1>Select Classes for Object Detection</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label for="image_upload">Upload Image:</label>
+        <input type="file" name="image_upload" accept="image/*" required><br>
+
+        <label for="selected_classes">Select Classes:</label>
+        <select name="selected_classes" multiple>
+            <option value="Hardhat">Hardhat</option>
+            <option value="Mask">Mask</option>
+            <option value="NO-Hardhat">NO-Hardhat</option>
+            <option value="NO-Mask">NO-Mask</option>
+            <option value="NO-Safety Vest">NO-Safety Vest</option>
+            <option value="Person">Person</option>
+            <option value="Safety Vest">Safety Vest</option>
+            <!-- Add more options for each class -->
+        </select><br>
+
+        <input type="submit" value="Detect Objects">
+    </form>
+</body>
+</html>
