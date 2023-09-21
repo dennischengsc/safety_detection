@@ -4,11 +4,17 @@ from PIL import Image
 import streamlit as st
 import subprocess
 import requests
+<<<<<<< HEAD
 from io import BytesIO
+=======
+>>>>>>> db7bc89bea552826f72b8fdcc334649edf2e9125
 
 # Local Modules
 import settings
 import helper
+
+# call api for streamlit
+url = 'https://safetydetection-d6yophmzga-ew.a.run.app/detect_image'
 
 # Setting page layout
 st.set_page_config(

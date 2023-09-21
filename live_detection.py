@@ -3,6 +3,7 @@
 - update 20230918-1516 Successful play the sound smoothly and incorporated person counting features, set interval = 5 (seconds)
 - return dataframe of number of person on site at every 5 sec(adjustable) interval
 '''
+import os
 import cv2
 from ultralytics import YOLO
 from pydub import AudioSegment
@@ -67,6 +68,9 @@ while True:
             # Define the color based on the class condition
             if c == 0 or c == 1 or c == 6:
                 box_color = (0, 0, 255)  # Red for matching classes
+                # Define the filename for the saved frame (you can customize this)
+                filename = f'results/frame_{time.time()}.jpg'
+                cv2.imwrite(filename, frame)
                 # Play the alert sound in a separate thread if it's not currently playing
                 threading.Thread(target=play_alert_sound).start()
             else:

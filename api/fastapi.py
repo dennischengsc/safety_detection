@@ -20,6 +20,7 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
+<<<<<<< HEAD
 model= YOLO('best.pt')
 #Setting up detection function for images
 @app.post("/detect_image/")
@@ -29,6 +30,14 @@ async def detect_image(image_upload: UploadFile = File(...),
                     #    selected_class1: List[int] = Form(...)
                        ):
 
+=======
+model= YOLO(LOCAL_MODEL_PATH)
+#Setting up detection function for images
+@app.post("/detect_image/")
+async def detect_image(image_upload: UploadFile = File(...),
+                       selected_classes: List[int] = Form(...)
+):
+>>>>>>> db7bc89bea552826f72b8fdcc334649edf2e9125
     if image_upload:
         selected_class = [int(number) for number in selected_class.split(",")]
         # IMPT** need to read uploaded images as bytes
@@ -36,7 +45,11 @@ async def detect_image(image_upload: UploadFile = File(...),
         # Convert the bytes to an OpenCV image
         image = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), -1)
         # Perform object detection using the YOLOv8 model
+<<<<<<< HEAD
         res = model.predict(image, classes = selected_class, conf = conf)
+=======
+        res = model.predict(image, classes = selected_classes)
+>>>>>>> db7bc89bea552826f72b8fdcc334649edf2e9125
         res_plotted = res[0].plot()[:, :, ::-1]
         bgr_image = cv2.cvtColor(res_plotted, cv2.COLOR_RGB2BGR)
         # Encode the image as JPEG (you can use other formats like PNG)
@@ -49,6 +62,10 @@ async def detect_image(image_upload: UploadFile = File(...),
 
 @app.get("/")
 def root():
+<<<<<<< HEAD
     return {
     'greeting':'Hello'
     }
+=======
+    return {'greeting':'Hello, this is local machine fastapi'}
+>>>>>>> db7bc89bea552826f72b8fdcc334649edf2e9125

@@ -1,6 +1,5 @@
 import os
 
-
 ##################  VARIABLES  ##################
 MODEL_TARGET = os.environ.get('MODEL_TARGET')
 GCP_PROJECT = os.environ.get('GCP_PROJECT')
@@ -18,6 +17,3 @@ LOCAL_REFERENCE_PATH = os.path.join(LOCAL_DATA_PATH, 'reference_image')
 NUM_CLASSES = 7
 CLASS_NAME = ['Hardhat', 'Mask', 'NO-Hardhat', 'NO-Mask',
               'NO-Safety Vest','Person', 'Safety Vest']
-
-#IF INCLUDING WEBCAM
-#LIVE_DEMO = ['NO-Hardhat', 'NO-Mask', 'NO-Safety Vest']

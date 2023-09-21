@@ -1,2 +1,5 @@
 run_api:
-	uvicorn api.fastapi:app --reload
+	uvicorn docker.fastapi:app --reload
+
+run_streamlit:
+	streamlit run app2.py

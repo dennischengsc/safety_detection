@@ -9,8 +9,11 @@ from pydub.playback import play
 from pydub import AudioSegment
 from ultralytics.utils.plotting import Annotator
 import threading
+<<<<<<< HEAD
 import pywhatkit as kit
 from datetime import datetime, timedelta
+=======
+>>>>>>> db7bc89bea552826f72b8fdcc334649edf2e9125
 
 
 # Local Modules
@@ -41,6 +44,7 @@ def display_tracker_options():
         return is_display_tracker, tracker_type
     return is_display_tracker, None
 
+<<<<<<< HEAD
 # Function to send a WhatsApp message with a longer wait time
 def send_whatsapp_message():
     message = 'Alert: Crowds Count Exceeded 10. Please check the work site situation.'
@@ -52,6 +56,8 @@ def send_whatsapp_message():
     # Send the WhatsApp message with a longer wait time (e.g., 10 seconds)
     kit.sendwhatmsg(phone_num, message, send_time.hour, send_time.minute, 10, 15)
 
+=======
+>>>>>>> db7bc89bea552826f72b8fdcc334649edf2e9125
 alert_sound_playing = False # alert sound flag
 
 def play_alert_sound():
@@ -67,15 +73,24 @@ def play_alert_sound():
         play(combined_sound)
         alert_sound_playing = False
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> db7bc89bea552826f72b8fdcc334649edf2e9125
 # Initialize a lock for synchronizing WhatsApp message sending
 whatsapp_lock = threading.Lock()
 
 # Define a function to send the WhatsApp message in a separate thread
+<<<<<<< HEAD
 def send_whatsapp_thread():
     with whatsapp_lock:
         send_whatsapp_message()
+=======
+# def send_whatsapp_thread():
+#     with whatsapp_lock:
+#         send_whatsapp_message()
+>>>>>>> db7bc89bea552826f72b8fdcc334649edf2e9125
 
 def _display_detected_frames(conf, model, st_frame, image, is_display_tracking=None, tracker=None, selected_classes=None):
     """
@@ -113,13 +128,18 @@ def _display_detected_frames(conf, model, st_frame, image, is_display_tracking=N
             # b = box.xyxy[0]  # get box coordinates in (top, left, bottom, right) format
             c = box.cls
             # Define the color based on the class condition
+<<<<<<< HEAD
             if c == 0 or c == 1 or c == 7:
+=======
+            if c == 1 or c == 7 or c == 0:
+>>>>>>> db7bc89bea552826f72b8fdcc334649edf2e9125
                 # box_color = (0, 0, 255)  # Red for matching classes
                 # Play the alert sound in a separate thread if it's not currently playing
                 threading.Thread(target=play_alert_sound).start()
             else:
                 pass
                 # box_color = (0, 255, 0)  # Green for non-matching classes
+<<<<<<< HEAD
 
     # Check if it's time to count and save
     current_time = time.time()
@@ -140,6 +160,8 @@ def _display_detected_frames(conf, model, st_frame, image, is_display_tracking=N
             threading.Thread(target=send_whatsapp_thread).start()
         else:
             pass
+=======
+>>>>>>> db7bc89bea552826f72b8fdcc334649edf2e9125
 
     # Plot the detected objects on the video frame
     res_plotted = res[0].plot()

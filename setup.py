@@ -5,7 +5,7 @@ with open("requirements.txt") as f:
     content = f.readlines()
 requirements = [x.strip() for x in content if "git+" not in x]
 
-setup(name='safety_detection',
+setup(name='docker',
       version="0.0.01",
       description="Safety Detection Model (api_pred)",
       license="MIT",
