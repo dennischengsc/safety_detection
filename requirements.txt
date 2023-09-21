@@ -1,4 +1,5 @@
 pydub
+pytube
 numpy==1.23.4
 Pillow==9.1.1
 streamlit==1.26.0
@@ -7,13 +8,12 @@ pandas==1.4.4
 ultralytics==8.0.175
 ipython==8.5.0
 Flask==2.3.3
-opencv-python==4.8.0
-<<<<<<< HEAD
-
-
-=======
->>>>>>> db444df1b785949fa12f6786e4952862d0bc0c6d
+# opencv-python==4.8.0
+opencv-python-headless
 fastapi==0.103.1
-python-multimethod==1.8
 starlette==0.27.0
 uvicorn==0.23.2
+python-multipart
+uvicorn
+fastapi
+protobuf

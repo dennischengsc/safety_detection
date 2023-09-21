@@ -5,12 +5,12 @@ with open("requirements.txt") as f:
     content = f.readlines()
 requirements = [x.strip() for x in content if "git+" not in x]
 
-setup(name='safety_detection',
+setup(name='docker',
       version="0.0.01",
       description="Safety Detection Model (api_pred)",
       license="MIT",
       author="Le Wagon",
-      author_email="contact@lewagon.org",
+      author_email="dennischeng520@gmail.com",
       #url="https://github.com/lewagon/taxi-fare",
       install_requires=requirements,
       packages=find_packages(),

@@ -2,10 +2,14 @@ from pathlib import Path
 import PIL
 import streamlit as st
 import subprocess
+import requests
 
 # Local Modules
 import settings
 import helper
+
+# call api for streamlit
+url = 'https://safetydetection-d6yophmzga-ew.a.run.app/detect_image'
 
 # Setting page layout
 st.set_page_config(
