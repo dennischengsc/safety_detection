@@ -7,20 +7,28 @@
 
 - 📫 Reference **Roboflow**
 
-- 📄 Total **10 classes were trained for the model**
+- 📄 Model : **YOLOv8 trained to detect 10 object classes.**
+- 📄 Optimizers : **Adamax/RMSProp/AdamW/SGD/Adam**
 
 
 <p align="center">
   <img src="images/banner-integrations.png" alt="Banner Integrations" />
 </p>
 
-
 <p align="center">
   <img src="images/yolo-comparison-plots.png" alt="YOLOv8 Model Comparison" />
 </p>
 
 <p align="center">
-  This is a comparison of the YOLOv8 model.
+  <span style="font-size: 12px;">This is a comparison of the YOLOv8 model.</span>
+</p>
+
+<p align="center">
+  <img src="yolov8_type.png" alt="YOLOv8 Model Types" />
+</p>
+
+<p align="center">
+  <span style="font-size: 12px;">Size, Speed, and Accuracy comparison of the five models of Yolov8. (Image Source: Ultralytics)</span>
 </p>
 
 <h3 align="left">Languages and Tools:</h3>
