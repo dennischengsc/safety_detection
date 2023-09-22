@@ -9,17 +9,18 @@
 
 - 📄 Total **10 classes were trained for the model**
 
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-<a href="https://linkedin.com/in/must fillin" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="must fillin" height="30" width="40" /></a>
-
-</p>
-
-
-
 
 <p align="center">
   <img src="images/banner-integrations.png" alt="Banner Integrations" />
+</p>
+
+
+<p align="center">
+  <img src="images/yolo-comparison-plots.png" alt="YOLOv8 Model Comparison" />
+</p>
+
+<p align="center">
+  This is a comparison of the YOLOv8 model.
 </p>
 
 <h3 align="left">Languages and Tools:</h3>
