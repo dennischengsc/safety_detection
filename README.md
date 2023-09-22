@@ -24,7 +24,7 @@
 </p>
 
 <p align="center">
-  <img src="yolov8_type.png" alt="YOLOv8 Model Types" />
+  <img src="images/yolov8_type.png" alt="YOLOv8 Model Types" />
 </p>
 
 <p align="center">
