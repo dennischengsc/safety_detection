@@ -3,7 +3,6 @@ import PIL
 import streamlit as st
 # Local Modules
 import settings
-# import helper
 import requests
 import os
 from PIL import Image
@@ -11,7 +10,8 @@ from io import BytesIO
 
 
 
-API_URL = 'YOUR_API_URL'
+url = 'https://safetydetection2-mity3tdx3q-ew.a.run.app/detect_image/'
+
 # Setting page layout
 st.set_page_config(
     page_title="Safety Object Detection using YOLOv8",
@@ -39,7 +39,7 @@ class_names = {
     3: 'NO-Mask',
     4: 'NO-Safety Vest',
     5: 'Person',
-    6: 'Safety Vest'
+    7: 'Safety Vest'
 }
 
 # Add a multi-select widget for class selection in the sidebar
@@ -52,8 +52,6 @@ model_path = None
 # Selecting Detection Or Live Prediction
 if model_type == 'Detection':
     model_path = Path(settings.DETECTION_MODEL)
-
-url = 'https://safetydetection-mity3tdx3q-ew.a.run.app/detect_image/'
 
 # Ensure the output directory exists
 output_directory = 'output_image'
@@ -93,14 +91,6 @@ def process_uploaded_image(uploaded_image, selected_class, conf_threshold):
                 # Handle other exceptions, e.g., connection errors
                 st.error(f"Exception: {str(e)}")
 
-
-# Load Pre-trained ML Model
-# try:
-#     model = helper.load_model(model_path)
-# except Exception as ex:
-#     st.error(f"Unable to load model. Check the specified path: {model_path}")
-#     st.error(ex)
-
 source_img = None
 
 # If image is selected
@@ -136,35 +126,3 @@ with col2:
             selected_class_numbers = [class_number for class_number, class_name in class_names.items() if class_name in selected_classes]
             selected_class_strings = ','.join(map(str, selected_class_numbers))
             process_uploaded_image(source_img, selected_class_strings, confidence)
-            # res = model.predict(uploaded_image,
-            #                     conf=confidence,
-            #                     classes=selected_class_numbers
-            #                     )
-            # # st.write(res)
-            # boxes = res[0].boxes
-
-            # res_plotted = res[0].plot()[:, :, ::-1]
-            # st.image(res_plotted, caption='Detected Image',
-            #             use_column_width=True)
-            # # Initialize a counter for class 5 object
-            # class_5_count = 0
-
-            # try:
-            #     with st.expander("Detection Results"):
-            #         for box in boxes:
-            #             # # Print detected class IDs for debugging
-            #             # detected_class_ids = [int(box.data[0][-1]) for box in boxes]
-            #             # st.write(f"Detected Class IDs: {detected_class_ids}")
-
-            #             # Extract class IDs
-            #             class_ids = box.data[:, -1]
-            #             if 5 in class_ids:
-            #                 class_5_count += 1
-
-            #             st.write(box.data)
-
-            #         # Display the total count of class 5 objects
-            #     st.write(f"Counter of Person is : {class_5_count}")
-
-            # except Exception as ex:
-            #     st.write("No image is uploaded yet!")
