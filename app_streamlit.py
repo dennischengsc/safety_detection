@@ -24,7 +24,7 @@ st.set_page_config(
 st.title("Safety Object Detection using YOLOv8")
 
 # Sidebar
-st.sidebar.header("ML Model Config")
+st.sidebar.header("Model Configuration")
 
 # Model Options
 model_type = st.sidebar.radio("Select Task", ['Detection'])
