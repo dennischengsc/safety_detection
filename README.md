@@ -1,55 +1,25 @@
-SAFETY DETECTION
+<h1 align="center">Hi 👋, this is object detection project</h1>
+<h3 align="center">Safety Object Detection</h3>
 
-This project aims to setup a live detection feed.
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=dennischengsc&label=Profile%20views&color=0e75b6&style=flat" alt="dennischengsc" /> </p>
 
-This live feed will be able to detect people not wearing their safety equipment and if the location is overcrowded.
+- 🔭 I’m currently working on **LeWagon**
 
-We have created a streamlit app on our local repository to be able to detect multiple inputs.
-This inputs include a active feed through a web camera, images, videos and a youtube link.
+- 📫 How to reach me **dennischeng520@gmail.om**
 
-Active Feed Features
-- Alert sound upon object detection of selected classes
-- Count of the people in the feed
-- Capturing the different frames where selected class was detected and saving into the 'results' folder (This will allow management to review who did not follow the safety protocols and take action)
-Images, Videos, Youtube link feeds
-- Able to choose the object to be detected from the prediction model
+- 📄 Know about my experiences [Manufacturing](Manufacturing)
 
-There will also be deployment of the model on a url that will be able to load multiple images to do object detection.
+<h3 align="left">Connect with me:</h3>
+<p align="left">
+<a href="https://linkedin.com/in/must fillin" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="must fillin" height="30" width="40" /></a>
+<a href="https://kaggle.com/must fillin" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/kaggle.svg" alt="must fillin" height="30" width="40" /></a>
+</p>
 
-In the future, we hope to be able to deploy the live feed feature and the uploading of videos.
+<h3 align="left">Languages and Tools:</h3>
+<p align="left"> <a href="https://appwrite.io" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/appwriteio/appwriteio-icon.svg" alt="appwrite" width="40" height="40"/> </a> <a href="https://www.arduino.cc/" target="_blank" rel="noreferrer"> <img src="https://cdn.worldvectorlogo.com/logos/arduino-1.svg" alt="arduino" width="40" height="40"/> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/> </a> <a href="https://cloud.google.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg" alt="gcp" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://www.adobe.com/in/products/illustrator.html" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/adobe_illustrator/adobe_illustrator-icon.svg" alt="illustrator" width="40" height="40"/> </a> <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> <a href="https://scikit-learn.org/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="scikit_learn" width="40" height="40"/> </a> <a href="https://www.tensorflow.org" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg" alt="tensorflow" width="40" height="40"/> </a> </p>
 
-REPOSITORY CONTENT
-safety_detection
-- api(folder)
-  - fastapi.py
-- donot_touch(folder)
-  - main_back_donotdelete.py
-- images(folder)
-- model(folder)
-  - model_list(folder)
-  - yolov8n_7classes(folder)
-- prediction(folder)
-  - predict(folder)
-  - ... (folders)
-- reference_image(folder)
-- results(folder)
-- safety_detection(folder)
-- sounds(folder)
-- templates(folder)
-- videos(folder)
-- weights(folder)
-- .gitignore
-- Makefile
-- README.md
-- app.py
-- data_prep.py
-- flask_app.py
-- helper.py
-- live_detection.py
-- main.py
-- model_training.py
-- params.py
-- prediction.py
-- requirements.txt
-- settings.py
-- setup.py
+<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=dennischengsc&show_icons=true&locale=en&layout=compact" alt="dennischengsc" /></p>
+
+<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=dennischengsc&show_icons=true&locale=en" alt="dennischengsc" /></p>
+
+<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=dennischengsc&" alt="dennischengsc" /></p>
