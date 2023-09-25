@@ -17,11 +17,12 @@ print(ROOT)
 
 # Select Sources
 IMAGE = 'Image'
-VIDEO = 'Video'
+# VIDEO = 'Video'
 WEBCAM = 'Webcam'
 YOUTUBE = 'YouTube'
 
-SOURCES_LIST = [IMAGE, VIDEO, WEBCAM, YOUTUBE]
+SOURCES_LIST = [IMAGE, WEBCAM, YOUTUBE]
+# SOURCES_LIST = [IMAGE, VIDEO, WEBCAM, YOUTUBE]
 # Images config
 IMAGES_DIR = ROOT
 DEFAULT_IMAGE = IMAGES_DIR / 'reference_image/image_01.jpg'
