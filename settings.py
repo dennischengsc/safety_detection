@@ -29,17 +29,17 @@ DEFAULT_IMAGE = IMAGES_DIR / 'reference_image/image_01.jpg'
 DEFAULT_DETECT_IMAGE = IMAGES_DIR / 'prediction//predict/image_01.jpg'
 
 # Videos config
-VIDEO_DIR = ROOT / 'videos'
-VIDEO_1_PATH = VIDEO_DIR / 'video_01.mp4'
-VIDEO_2_PATH = VIDEO_DIR / 'video_02.mp4'
-VIDEO_3_PATH = VIDEO_DIR / 'video_03.mp4'
-VIDEO_4_PATH = VIDEO_DIR / 'video_04.mp4'
-VIDEOS_DICT = {
-    'video_1': VIDEO_1_PATH,
-    'video_2': VIDEO_2_PATH,
-    'video_3': VIDEO_3_PATH,
-    'video_4': VIDEO_4_PATH,
-}
+# VIDEO_DIR = ROOT / 'videos'
+# VIDEO_1_PATH = VIDEO_DIR / 'video_01.mp4'
+# VIDEO_2_PATH = VIDEO_DIR / 'video_02.mp4'
+# VIDEO_3_PATH = VIDEO_DIR / 'video_03.mp4'
+# VIDEO_4_PATH = VIDEO_DIR / 'video_04.mp4'
+# VIDEOS_DICT = {
+#     'video_1': VIDEO_1_PATH,
+#     'video_2': VIDEO_2_PATH,
+#     'video_3': VIDEO_3_PATH,
+#     'video_4': VIDEO_4_PATH,
+# }
 
 # ML Model config
 MODEL_DIR = ROOT

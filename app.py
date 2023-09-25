@@ -134,9 +134,9 @@ if source_radio == settings.IMAGE:
 
 
 
-elif source_radio == settings.VIDEO:
-    selected_class_numbers = [class_number for class_number, class_name in class_names.items() if class_name in selected_classes]
-    helper.play_stored_video(confidence, model, selected_class_numbers)
+# elif source_radio == settings.VIDEO:
+#     selected_class_numbers = [class_number for class_number, class_name in class_names.items() if class_name in selected_classes]
+#     helper.play_stored_video(confidence, model, selected_class_numbers)
 
 
 elif source_radio == settings.WEBCAM:
